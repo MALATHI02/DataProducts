@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 ## Create a Shiny Application
 
-Files(server.R, ui.R and ShinyApp.Rmd) are available in github repo : 
+Files(server.R, ui.R and ShinyAppRep.Rmd) are available in github repo : 
 https://github.com/MALATHI02/DataProducts/tree/master/ShinyApp
 
 Review Criteria:
