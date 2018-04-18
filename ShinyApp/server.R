@@ -8,7 +8,7 @@
 #
 
 library(shiny)
-shinyServer(
+server <- shinyServer(
   function(input, output){
     output$monExp <- renderText({ calculateMonExp(input$Grocery, input$CarLoan,input$Util, input$Cable, input$MisExp) })
     output$remBal <- renderText({(input$Income -(calculateMonExp(input$Grocery, input$CarLoan,input$Util, input$Cable, input$MisExp)) )})

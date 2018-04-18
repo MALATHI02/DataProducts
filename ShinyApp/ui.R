@@ -8,9 +8,9 @@
 #
 
 library(shiny)
-shinyUI(pageWithSidebar(
+ui <- shinyUI(pageWithSidebar(
   headerPanel("Household Expenses"),
-  sidebarPanel(
+    sidebarPanel(
     h4('Income (Monthly'),
     numericInput('Income', 'Price ($)', 5000),
     h5('Expenses'),

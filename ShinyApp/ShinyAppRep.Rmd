@@ -1,0 +1,97 @@
+---
+title: "Shiny Application and Reproducible Pitch" 
+output : ioslides_presentation
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+## Create a Shiny Application
+
+Files(server.R, ui.R and ShinyApp.Rmd) are available in github repo : 
+https://github.com/MALATHI02/DataProducts/tree/master/ShinyApp
+
+Review Criteria:
+
+1.Write a shiny application with associated supporting documentation. The documentation should be thought of as whatever a user will need to get started using your application.
+
+2.Deploy the application on Rstudio's shiny server
+
+3.Share the application link by pasting it into the provided text box
+
+4.Share your server.R and ui.R code on github
+
+## Reproducible Pitch Presentation
+
+Presentation is available in : https://mvakka.shinyapps.io/ShinyAppRep/
+
+Review Criteria:
+
+1.It must be done in Slidify or Rstudio Presenter
+
+2.It must be 5 pages
+
+3.It must be hosted on github or Rpubs
+
+4.It must contained some embedded R code that gets run when slidifying the document
+
+## R Code
+
+```{r, echo = FALSE}
+
+library(shiny)
+ui <- shinyUI(pageWithSidebar(
+  headerPanel("Household Expenses"),
+  sidebarPanel(
+    h4('Income (Monthly'),
+    numericInput('Income', 'Price ($)', 5000),
+    h5('Expenses'),
+    numericInput('Grocery', 'Grocery ($ per week)', 200),
+    numericInput('CarLoan', 'Car Loan(s) ($ per month)', 180),
+    numericInput('Util', 'Utilities ($ per week)', 200),
+    numericInput('Cable', 'Cable ($ per month)', 200),
+    numericInput('MisExp', 'Miscellaneous expenses ($ per week)', 200)
+ ),
+  mainPanel(
+    h4('Monthly Expenses ($)'),
+    textOutput("monExp"),
+    h4('Cash Remaining Per Month ($)'),
+    textOutput("remBal"),
+    br(),
+    h4('Instructions'),
+    helpText("This application is designed to calculate the potential expenses to income"),
+    code("Monthly Expense"),
+    helpText("Enter the itemised expenses to calculate the monthly expense."),
+    code("Cash Remaining"),
+    helpText("This is the Income minus the expenses.")
+  )
+))
+
+server <- shinyServer(
+  function(input, output){
+    output$monExp <- renderText({ calculateMonExp(input$Grocery, input$CarLoan,input$Util, input$Cable, input$MisExp) })
+    output$remBal <- renderText({(input$Income -(calculateMonExp(input$Grocery, input$CarLoan,input$Util, input$Cable, input$MisExp)) )})
+
+  }
+)
+
+calculateMonExp <- function (Grocery, CarLoan,Util,Cable,MisExp)
+{
+  result <- (Grocery * 4) + CarLoan + Util + Cable + (MisExp * 4)
+  expense <- result
+  return(round(result, digits = 2))
+}
+
+shinyApp(ui, server)
+```
+
+## Shiny Application
+
+Link to Application : https://mvakka.shinyapps.io/ShinyApp/
+
+This Application calculates the amount paid for food consumption, utilities and other expenses. The sum of all the expenses is subtracted from income to find the remaining cash on hand.
+
+
+
