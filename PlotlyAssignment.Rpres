@@ -1,0 +1,20 @@
+Plotly Assignment
+========================================================
+author: Malathi
+date: `r format(Sys.time(), "%d %B, %Y")`
+autosize: true
+
+##Load the library and Cars Data Set
+========================================================
+
+```{r}
+library(plotly)
+summary(cars)
+```
+
+##Plot
+========================================================
+
+```{r, echo=FALSE}
+plot_ly(cars, x = ~speed, y =~dist, type="scatter", mode = "markers")
+```

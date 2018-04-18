@@ -1,0 +1,30 @@
+---
+title: "Data Product Assignment - R Markdown Presentation & Plotly"
+output: ioslides_presentation
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction 
+
+This document shows an example of making a web presentation with graphics, using R Markdown (http://rmarkdown.rstudio.com) and Ploty 
+
+Data used in this example is from cars data set.
+
+
+## Load Data
+
+```{r cars, echo = TRUE}
+suppressMessages(library(plotly))
+summary(cars)
+```
+
+## Plot
+
+```{r}
+plot_ly(cars, x = ~speed, y =~dist, type="scatter", mode = "markers")
+```
+

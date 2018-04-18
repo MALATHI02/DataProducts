@@ -1,0 +1,48 @@
+---
+title: "Developing Data Products - R Markdown and Leaflet"
+output: html_document
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Introduction
+
+Create a web page using R Markdown that features a map created with Leaflet.
+
+Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity!
+
+
+### Review Criteria
+
+1. Does the web page feature a date and is this date less than two months before the date that you're grading this assignment?
+
+2. Does the web page feature an interactive map that appears to have been created with Leaflet?
+
+```{r}
+#Load libraries
+library(knitr)
+library(leaflet)
+library(dplyr)
+
+```
+
+### Submission
+Submitting 7 wonders of the modern world.
+
+```{r}
+m <- leaflet(width = "100%") %>% addTiles() %>%  # Add default OpenStreetMap map tiles 
+   addMarkers(lat= 20.6667, lng= -88.5667, popup="Chichén Itza, Mexico" ) %>%
+  addMarkers(lat = 22.9519, lng= 43.2105, popup="Christ the Redeemer Statue, Brazil") %>%
+  addMarkers(lat = 41.8902, lng= 12.4922, popup="Colosseum, Italy") %>%
+  addMarkers(lat = 27.1750, lng=78.0422, popup="Taj Mahal, India") %>%
+  addMarkers(lat = 40.4319, lng= 116.5704, popup="Great Wall of China, China") %>%
+  addMarkers(lat = 30.3285, lng= 35.4444, popup="Petra, Jordan") %>%
+  addMarkers(lat =-13.163068, lng= -72.545128, popup="Machu Picchu, Peru") 
+(m)
+```

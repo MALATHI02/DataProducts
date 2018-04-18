@@ -1,0 +1,12 @@
+name: ShinyApp
+title: ShinyApp
+username:
+account: mvakka
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 325306
+bundleId: 1325881
+url: https://mvakka.shinyapps.io/ShinyApp/
+when: 1524071980.96728
+asMultiple: FALSE
+asStatic: FALSE
